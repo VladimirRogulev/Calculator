@@ -9,6 +9,10 @@
         <div class="main-area"> 
             <div id="window" class="screen">0</div>
             <div class="row"> 
+                <div class="clean" onclick="clean()">C</div>
+                <div class="back" onclick="back()">←</div>
+            </div>
+            <div class="row"> 
                 <div class="button number-button" onclick="number(7)">7</div>
                 <div class="button number-button" onclick="number(8)">8</div>
                 <div class="button number-button" onclick="number(9)">9</div>
@@ -28,7 +32,7 @@
             </div>
             <div class="row"> 
                 <div class="button number-button" onclick="number(0)">0</div>
-                <div class="button action-button" onclick="action('.')">·</div>
+                <div class="button action-button" onclick="dot('.')">·</div>
                 <div class="button action-button" onclick="equal()">=</div>
                 <div class="button action-button" onclick="action('+')">+</div>
             </div>

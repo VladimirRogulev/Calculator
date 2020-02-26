@@ -6,7 +6,7 @@ body {
 }
 
 .main-area {
-    height: 320px;
+    height: 380px;
     width: 250px;
     background: #5a5c68;
     padding-top: 10px;
@@ -51,5 +51,31 @@ body {
 }
 
 .action-button {
+    background: #bfc4ca;
+}
+
+.clean {
+    height: 50px;
+    width: 110px;
+    margin: 5px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 48px;
+    color: #feffff;
+    vertical-align: middle;
+    cursor: pointer;
+    background: #bfc4ca;
+}
+
+.back {
+    height: 50px;
+    width: 110px;
+    margin: 5px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 48px;
+    color: #feffff;
+    vertical-align: middle;
+    cursor: pointer; 
     background: #bfc4ca;
 }
