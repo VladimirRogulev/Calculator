@@ -44,6 +44,7 @@ body {
     color: #feffff;
     vertical-align: middle;
     cursor: pointer;
+    user-select: none;
 }
 
 .number-button {
@@ -65,6 +66,7 @@ body {
     vertical-align: middle;
     cursor: pointer;
     background: #bfc4ca;
+    user-select: none;
 }
 
 .back {
@@ -78,4 +80,5 @@ body {
     vertical-align: middle;
     cursor: pointer; 
     background: #bfc4ca;
+    user-select: none;
 }

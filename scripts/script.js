@@ -1,4 +1,4 @@
-const screen = document.getElementById("window");
+const screen = document.getElementById('window');
 let result;
 let act;
 let sign = false;
@@ -12,18 +12,16 @@ const action = (action) => {
 };
 
 const dot = (dot) => {
-    if(screen.innerHTML.length < 12){
-        if(!point){
+    if(screen.innerHTML.length < 12 && !point){
             screen.innerHTML += dot;
             point = true;
             sign = true;
-        }
     }
 };
 
 const number = (num) => {
     if(screen.innerHTML.length < 12){
-        if(screen.innerHTML !== '0' && sign){
+        if(+screen.innerHTML && sign){
             screen.innerHTML += num;
         } else {
             screen.innerHTML = num;
@@ -47,14 +45,16 @@ const equal = () => {
             case '+':
                 result += Number(screen.innerHTML);
                 break;
+            default:
+                result = Number(screen.innerHTML);
         }
 
         if (String(+result.toFixed(10)).length < 13){
             screen.innerHTML = +result.toFixed(10);
             act = undefined;
         } else {
-            screen.innerHTML = "0";
-            alert("Число не может поменстится на экран!"); 
+            screen.innerHTML = '0';
+            alert('Число не может поместиться на экран!'); 
         }
     }
 };
@@ -62,11 +62,15 @@ const equal = () => {
 const clean = () => {
     screen.innerHTML = '0';
     result = 0;
-    act = '';
+    act = undefined;
     sign = false;
     point = false;
-}
+};
 
 const back = () => {
-    screen.innerHTML = screen.innerHTML.substring(0, screen.innerHTML.length - 1);
-}
+    if (screen.innerHTML === 'Infinity'){
+        clean();
+    } else {
+        screen.innerHTML = screen.innerHTML.substring(0, screen.innerHTML.length - 1);
+    }
+};
