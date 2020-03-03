@@ -1,68 +1,40 @@
 const screen = document.getElementById('window');
-let result;
-let act;
-let sign = false;
-let point = false;
+sign = false;
+point = false;
+
+const number = (number) => {
+    if(screen.innerHTML.length < 12){
+        if(screen.innerHTML !== '0'){
+            screen.innerHTML += number;
+        } else {
+            screen.innerHTML = number;
+        }
+    }
+    sign = false;
+};
 
 const action = (action) => {
-	act = action;
-    sign = false;
-    point = false;
-	result = Number(screen.innerHTML);
+    if(screen.innerHTML.length < 11){
+        if (!sign){
+            screen.innerHTML += action;
+            sign = true;
+            point = false;
+        } else {
+            screen.innerHTML = screen.innerHTML.substring(0, screen.innerHTML.length - 1) + action;
+            point = false;
+        }
+    }
 };
 
 const dot = (dot) => {
-    if(screen.innerHTML.length < 12 && !point){
-            screen.innerHTML += dot;
-            point = true;
-            sign = true;
-    }
-};
-
-const number = (num) => {
-    if(screen.innerHTML.length < 12){
-        if(+screen.innerHTML && sign){
-            screen.innerHTML += num;
-        } else {
-            screen.innerHTML = num;
-            sign = true;
-        }
-    }
-};
-
-const equal = () => {
-    if(act !== undefined){
-        switch(act){
-            case '/':
-                result /= Number(screen.innerHTML);
-                break;
-            case '*':
-                result *= Number(screen.innerHTML);
-                break;
-            case '-':
-                result -= Number(screen.innerHTML);
-                break;
-            case '+':
-                result += Number(screen.innerHTML);
-                break;
-            default:
-                result = Number(screen.innerHTML);
-        }
-
-        if (String(+result.toFixed(10)).length < 13){
-            screen.innerHTML = +result.toFixed(10);
-            act = undefined;
-        } else {
-            screen.innerHTML = '0';
-            alert('Число не может поместиться на экран!'); 
-        }
+    if (screen.innerHTML.length < 11 && !point && !sign){
+        screen.innerHTML += dot;
+        point = true;
     }
 };
 
 const clean = () => {
     screen.innerHTML = '0';
-    result = 0;
-    act = undefined;
     sign = false;
     point = false;
 };
@@ -70,7 +42,24 @@ const clean = () => {
 const back = () => {
     if (screen.innerHTML === 'Infinity'){
         clean();
+    } else if (point){
+        screen.innerHTML = screen.innerHTML.substring(0, screen.innerHTML.length - 1);
+        point = false;
+    } else if (sign){
+        screen.innerHTML = screen.innerHTML.substring(0, screen.innerHTML.length - 1);
+        sign = false;
     } else {
         screen.innerHTML = screen.innerHTML.substring(0, screen.innerHTML.length - 1);
+    }
+};
+
+const equal = () => {
+    let result = eval(screen.innerHTML);
+
+    if (String(+result.toFixed(10)).length < 13){
+        screen.innerHTML = +result.toFixed(10);
+    } else {
+        screen.innerHTML = '0';
+        alert('Число не может поместиться на экран!'); 
     }
 };
